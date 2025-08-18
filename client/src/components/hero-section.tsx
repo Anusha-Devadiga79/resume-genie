@@ -12,7 +12,16 @@ export default function HeroSection() {
             Get past hiring filters and land more interviews.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors text-lg font-semibold" data-testid="button-upload-resume">
+            <button 
+              onClick={() => {
+                const uploadSection = document.querySelector('[data-testid="dropzone-upload"]');
+                if (uploadSection) {
+                  uploadSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-colors text-lg font-semibold" 
+              data-testid="button-upload-resume"
+            >
               <i className="fas fa-upload mr-2"></i>
               Upload Resume
             </button>

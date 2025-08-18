@@ -1,15 +1,17 @@
+import { Link } from "wouter";
+
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center space-x-3 mb-4">
+            <Link href="/" className="flex items-center space-x-3 mb-4">
               <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
                 <i className="fas fa-magic text-white text-sm"></i>
               </div>
               <h4 className="text-xl font-bold">ResumeGenie</h4>
-            </div>
+            </Link>
             <p className="text-slate-400 mb-4">AI-powered resume optimization that gets you hired faster.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-slate-400 hover:text-white" data-testid="link-twitter">
@@ -27,8 +29,8 @@ export default function Footer() {
           <div>
             <h5 className="font-semibold mb-4">Product</h5>
             <ul className="space-y-2 text-slate-400">
-              <li><a href="#" className="hover:text-white">Features</a></li>
-              <li><a href="#" className="hover:text-white">Pricing</a></li>
+              <li><Link href="/features" className="hover:text-white">Features</Link></li>
+              <li><Link href="/pricing" className="hover:text-white">Pricing</Link></li>
               <li><a href="#" className="hover:text-white">Templates</a></li>
               <li><a href="#" className="hover:text-white">API</a></li>
             </ul>
