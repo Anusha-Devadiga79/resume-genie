@@ -1,6 +1,6 @@
 # Overview
 
-ResumeGenie is an AI-powered resume optimization platform built with React and Express. The application allows users to upload their resumes, analyzes them for ATS (Applicant Tracking System) compatibility, and provides intelligent optimization suggestions using OpenAI's language models. The system includes features for document parsing, keyword analysis, content optimization, and multi-format export capabilities.
+ResumeGenie is an AI-powered resume optimization platform built with React and Express. The application allows users to both upload existing resumes for analysis and build new resumes from scratch using a comprehensive form-based interface. The system analyzes resumes for ATS (Applicant Tracking System) compatibility, provides intelligent optimization suggestions using OpenAI's language models, and offers downloadable resume exports in multiple formats. Key features include document parsing, keyword analysis, content optimization, resume building with layout options, and multi-format export capabilities.
 
 # User Preferences
 
@@ -9,10 +9,10 @@ Preferred communication style: Simple, everyday language.
 # System Architecture
 
 ## Frontend Architecture
-The client application is built using React 18 with TypeScript, utilizing a modern component-based architecture. The UI is constructed with shadcn/ui components built on top of Radix UI primitives, providing accessible and customizable interface elements. The application uses Wouter for lightweight client-side routing and TanStack Query for efficient server state management and API interactions. Styling is handled through Tailwind CSS with custom CSS variables for theming support.
+The client application is built using React 18 with TypeScript, utilizing a modern component-based architecture. The UI is constructed with shadcn/ui components built on top of Radix UI primitives, providing accessible and customizable interface elements. The application uses Wouter for lightweight client-side routing and TanStack Query for efficient server state management and API interactions. Styling is handled through Tailwind CSS with custom CSS variables for theming support. The application features a comprehensive Resume Builder tab with form validation using react-hook-form and zod schemas.
 
 ## Backend Architecture
-The server is implemented using Express.js with TypeScript, following a RESTful API design pattern. The architecture separates concerns through dedicated service layers for document parsing, ATS analysis, and AI-powered optimization. The application supports file uploads through Multer middleware with configurable size limits and file type validation. Background processing is implemented for computationally intensive tasks like document parsing and AI analysis.
+The server is implemented using Express.js with TypeScript, following a RESTful API design pattern. The architecture separates concerns through dedicated service layers for document parsing, ATS analysis, and AI-powered optimization. The application supports file uploads through Multer middleware with configurable size limits and file type validation. Background processing is implemented for computationally intensive tasks like document parsing and AI analysis. The system includes endpoints for resume building from form data, enhanced export functionality with proper file download handling, and support for both single and double-column resume layouts.
 
 ## Data Storage Solution
 The system uses an in-memory storage implementation (MemStorage) for development and testing, with a PostgreSQL-compatible schema defined through Drizzle ORM. The database schema includes tables for users and resumes, with support for JSON fields to store complex data structures like keyword analysis results and optimization suggestions. The schema supports rich metadata storage including ATS scores, processing status, and improvement recommendations.

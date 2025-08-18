@@ -22,15 +22,33 @@ export default function PreviewExportTab({ resume }: PreviewExportTabProps) {
         format,
         template
       });
-      return response.json();
+      
+      // Check if response is a file or JSON error
+      if (response.headers.get('content-type')?.includes('application/json')) {
+        const data = await response.json();
+        if (data.error) throw new Error(data.message || 'Export failed');
+        return data;
+      }
+      
+      // Handle file download
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = `resume.${format}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      
+      return { format, downloaded: true };
     },
     onSuccess: (data) => {
       toast({
-        title: "Export Ready",
-        description: `Your resume has been prepared in ${data.format.toUpperCase()} format.`,
+        title: "Download Started",
+        description: `Resume downloaded in ${data.format?.toUpperCase() || 'requested'} format.`,
       });
-      // In a real implementation, this would trigger a download
-      console.log("Download URL:", data.downloadUrl);
     },
     onError: (error) => {
       toast({
