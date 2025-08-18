@@ -13,7 +13,7 @@ export async function parseDocument(filePath: string, fileType: string): Promise
   return new Promise((resolve, reject) => {
     const pythonScript = path.resolve(process.cwd(), "python_scripts", "document_parser.py");
     
-    const python = spawn("python3", [pythonScript, filePath, fileType]);
+    const python = spawn("python", [pythonScript, filePath, fileType]);
     
     let output = "";
     let errorOutput = "";
